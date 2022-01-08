@@ -1,14 +1,11 @@
-import { Component } from "react";
-import fetchImages from "../Services/Api";
-
-export default class ImageGallery extends Component {
-  state = {
-    status: "idle",
-  };
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  render() {
-    return null;
-  }
+export default function ImageGallery({ data }) {
+  return (
+    <ul>
+      {data.map((image) => (
+        <li key={image.id}>
+          <img src={image.webformatURL} alt={image.tags} />
+        </li>
+      ))}
+    </ul>
+  );
 }

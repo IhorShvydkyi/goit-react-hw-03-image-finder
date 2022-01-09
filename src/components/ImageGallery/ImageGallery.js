@@ -1,11 +1,22 @@
-export default function ImageGallery({ data }) {
+import {
+  GalleryList,
+  GalleriItem,
+  GalleriItemImg,
+} from "./ImageGallery.styled";
+
+export default function ImageGallery({ data, onOpenModal }) {
   return (
-    <ul>
+    <GalleryList>
       {data.map((image) => (
-        <li key={image.id}>
-          <img src={image.webformatURL} alt={image.tags} />
-        </li>
+        <GalleriItem
+          onClick={() => {
+            onOpenModal(image);
+          }}
+          key={image.id}
+        >
+          <GalleriItemImg src={image.webformatURL} alt={image.tags} />
+        </GalleriItem>
       ))}
-    </ul>
+    </GalleryList>
   );
 }
